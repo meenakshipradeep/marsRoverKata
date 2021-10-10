@@ -40,6 +40,7 @@ public class MarRoverPos {
                 if (orientN.value == value) {
                     return orientN;
                 }
+
             }
             return null;
         }
