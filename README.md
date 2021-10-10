@@ -1,17 +1,34 @@
-# Mars Rover Kata solution
+MarsRoverControl
+Contains all teh functiosn to drive the Mars rover requiremetn in kata and has aindependently executable main funtion
 
-This repository contains solution to Mars Rover Kata assignment.
+MarRoverPos
+Hols the coodinates were Mors Rover is present
 
-## Features
+Rover Class
+The Rover will have his current position in x  y
+and the orientation that it's facing e.g N/E/W/S.
+command "execute" may change the orientation or move to next position after checking if it's free.
 
-The solution consists of Plateau, Rover, Position objects and a MissionControl class to perform the navigation of Rovers on the Plateau.
+Plateau Class
+We have the Plateau grid shapes than square/rectangle and can be represented as grid of integers
 
-The input commands are read from txt file src/main/resources/inputinstructions.txt
-The program outputs the final position of the Rovers to txt file src/main/resources/output.txt
+MarsRoverTests
 
-## Assumptions
-The Plateau is rectangular with a upper top, right coordinates of 5,5 and lower coordinates as 0,0.
-The end result position after executing the  input commands is assumed to stay within the boundary of the Plateau
+Contains list of executables self explained tests as below
 
+MarsRoverTests.validateMovementRoverLeftfromSouthFacingDirection
+MarsRoverTests.initandValidateRoverMovementSecondRequirement
+MarsRoverTests.validateMovementRoverMoveForward
+MarsRoverTests.validateMovementRoverRightfromNorthDirection
+MarsRoverTests.validateMovementRoverLeftfromWestFacingDirection
+MarsRoverTests.validateMovementRoverLeftfromNorthFacingDirection
+MarsRoverTests.initandValidateRoverMovementFirstRequirement
+MarsRoverTests.validatePlateauWithMaxCoOrdsLimit
+MarsRoverTests.validateMovementRoverLeftfromEastFacingDirection
+MarsRoverTests.validateMovementRoverRightfromSouthDirection
+MarsRoverTests.validateMovementRoverRightfromWestDirection
+MarsRoverTests.validatePlateauWithInvalidCoOrdsLimit
+MarsRoverTests.validateMovementRoverRightfromEastDirection
 
-
+logs of tests attached 
+![img.png](img.png)

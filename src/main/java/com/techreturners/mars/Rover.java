@@ -1,109 +1,48 @@
 package com.techreturners.mars;
 
 public class Rover {
-    //has a position on the plateau
-    //can receive a String of commands
-    //behaviours
-    //turnLeft , turnRight, Move
+    //has a MarRoverPos on the plateau and receive a String of commands
+    //behaviours for Mars Rover turn Left , turn Right, Move
     private int roverId;
-    private Position position;
+    private MarRoverPos MarRoverPos;
     private String commands;
     private int roverCount;
+    com.techreturners.mars.MarRoverPos.Orientation Direction;
 
     public Rover() {
     }
 
-    public Rover(int x, int y, String orientation) {
-        this.position = new Position(x,y,orientation);
+    //has a MarRoverPos on the plateau
+    public Rover(int x, int y, String orient) {
+        this.MarRoverPos = new MarRoverPos(x, y, orient);
         this.roverId = ++roverCount;
+        Direction = Direction.valueOf(orient);
     }
 
-    public int getRoverId() {
-        return roverId;
-    }
-
-    public void setRoverId(int roverId) {
-        this.roverId = roverId;
-    }
-
-    public Position getPosition() {
-        return position;
-    }
-
-    public void setPosition(Position pos) {
-        this.position = pos;
-    }
-
-    public String getCommands() {
-        return commands;
-    }
-
-    public void setCommands(String commands) {
-        this.commands = commands;
-    }
-
-    public int getRoverCount() {
-        return roverCount;
-    }
-
-    public void setRoverCount(int roverCount) {
-        this.roverCount = roverCount;
-    }
-
-    public void startNavigation(){
-        for (char command : getCommands().toCharArray()){
-            if (command == 'L') {
-                turnLeft();
-            } else if (command == 'R'){
-                turnRight();
-            } else if (command == 'M'){
-                moveForward();
+    public String execute(String command) {
+        for (char c : command.toCharArray()) {
+            if (c == 'L') {
+                Direction = Direction.left();
+            } else if (c == 'R') {
+                // turnRight();
+                Direction = Direction.right();
+            } else if (c == 'M') {
+                moveRover();
             }
-
         }
-    }
-    private void turnLeft() {
-        if (this.position.getOrientation().toString() == "E"){
-            this.position.setOrientation("N");
-        }
-        else if (this.position.getOrientation().toString() == "N"){
-            this.position.setOrientation("W");
-        }
-        else if (this.position.getOrientation().toString() == "W"){
-            this.position.setOrientation("S");
-        }
-        else if (this.position.getOrientation().toString() == "S"){
-            this.position.setOrientation("E");
-        }
+        // return current Rover Position
+        return MarRoverPos.getCoOrdX() + " " + MarRoverPos.getCoOrdY() + " " + Direction.value();
     }
 
-    private void turnRight() {
-        if (this.position.getOrientation().toString() == "E"){
-            this.position.setOrientation("S");
-        }
-        else if (this.position.getOrientation().toString() == "S"){
-            this.position.setOrientation("W");
-        }
-        else if (this.position.getOrientation().toString() == "W"){
-            this.position.setOrientation("N");
-        }
-        else if (this.position.getOrientation().toString() == "N"){
-            this.position.setOrientation("E");
-        }
-    }
-
-    private void moveForward() {
-        if (this.position.getOrientation().toString() == "N"){
-            this.position.setCoordinateY(position.getCoordinateY()+1);
-        }
-        else if (this.position.getOrientation().toString() == "E"){
-            this.position.setCoordinateX(position.getCoordinateX()+1);
-        }
-        else if (this.position.getOrientation().toString() == "S"){
-            this.position.setCoordinateY(position.getCoordinateY()-1);
-        }
-        else if (this.position.getOrientation().toString() == "W"){
-            this.position.setCoordinateX(position.getCoordinateX()-1);
+    private void moveRover() {
+        if (this.Direction.value() == "N") {
+            this.MarRoverPos.setCoOrdY(MarRoverPos.getCoOrdY() + 1);
+        } else if (this.Direction.value() == "E") {
+            this.MarRoverPos.setCoOrdX(MarRoverPos.getCoOrdX() + 1);
+        } else if (this.Direction.value() == "S") {
+            this.MarRoverPos.setCoOrdY(MarRoverPos.getCoOrdY() - 1);
+        } else if (this.Direction.value() == "W") {
+            this.MarRoverPos.setCoOrdX(MarRoverPos.getCoOrdX() - 1);
         }
     }
 
