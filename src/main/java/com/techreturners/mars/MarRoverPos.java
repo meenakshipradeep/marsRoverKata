@@ -41,6 +41,7 @@ public class MarRoverPos {
                     return orientN;
                 }
             }
+
             return null;
         }
     }
