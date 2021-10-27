@@ -1,5 +1,5 @@
 MarsRoverControl
-Contains all teh functiosn to drive the Mars rover requiremetn in kata and has aindependently executable main funtion
+Contains all teh function to drive the Mars rover requiremetn in kata and has a independently executable main funtion
 
 MarRoverPos
 Hols the coodinates were Mors Rover is present

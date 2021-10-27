@@ -37,11 +37,10 @@ public class MarRoverPos {
 
         public Orientation matchingOrientation(String value) {
             for (Orientation orientN : values()) {
-                if (orientN.value == value) {
+                if (orientN.value.equals(value) ) {
                     return orientN;
                 }
             }
-
             return null;
         }
     }

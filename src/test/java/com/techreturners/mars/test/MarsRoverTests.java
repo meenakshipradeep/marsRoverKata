@@ -16,7 +16,8 @@ public class MarsRoverTests {
     @Test
     public void initandValidateRoverMovementFirstRequirement() {
         //ARRANGE, ACT and ASSERT
-        Assert.assertThat(new Rover(3, 3, "E").execute("MMRMMRMRRM"), is("5 1 E"));
+        Assert.assertThat(new Rover(3, 3, "E")
+                .execute("MMRMMRMRRM"), is("5 1 E"));
     }
 
     @Test
@@ -24,39 +25,9 @@ public class MarsRoverTests {
         //ARRANGE
         // Rover rover = new Rover(1,2,"N");
         //ACT                           and ASSERT
-        Assert.assertThat(new Rover(1, 2, "N").execute("LMLMLMLMM"), is("1 3 N"));
+        Assert.assertThat(new Rover(1, 2, "N")
+                .execute("LMLMLMLMM"), is("1 3 N"));
     }
-
-    @Test
-    public void validatePlateauWithMaxCoOrdsLimit() throws Exception {
-        //Arrange
-        Plateau plateau;
-        String exception = null;
-        //ACT
-        try {
-            plateau = new Plateau(6, 6);
-        } catch (Exception e) {
-            exception = e.getMessage();
-        }
-        //ASSERT
-        assertEquals("Invalid Input to Upper CoOrds.", exception);
-    }
-
-    @Test
-    public void validatePlateauWithInvalidCoOrdsLimit() throws Exception {
-        //Arrange
-        Plateau plateau;
-        String exception = null;
-        //ACT
-        try {
-            plateau = new Plateau(-1, 6);
-        } catch (Exception e) {
-            exception = e.getMessage();
-        }
-        //ASSERT
-        assertEquals("Invalid Input to Upper CoOrds.", exception);
-    }
-
 
     //test implement Rover behaviours
 
